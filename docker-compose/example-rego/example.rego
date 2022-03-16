@@ -1,6 +1,6 @@
 package gateway.example
 
-default allow = false
+default allow = true
 
 # Allow GET /
 allow {

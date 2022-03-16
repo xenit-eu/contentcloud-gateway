@@ -24,10 +24,16 @@ services:
     environment:
       - "OPA_SERVICE_URL=http://opa:8181"
       - "OPA_QUERY=data.gateway.example.allow == true"
-      - "TESTING_BOOTSTRAP_ENABLE=true"
+      - "TESTING_BOOTSTRAP_ENABLE=false"
       - "TESTING_BOOTSTRAP_USERS_0_USERNAME=alice"
       - "TESTING_BOOTSTRAP_USERS_0_AUTHORITIES={\"employers\": [\"BE0999999999\"]}"
       - "TESTING_BOOTSTRAP_USERS_1_USERNAME=bob"
       - "TESTING_BOOTSTRAP_USERS_1_AUTHORITIES={\"employers\": [\"BE0999999999\", \"BE0123456789\"], \"customers\": [\"BE9988776655\", \"BE5544332211\", \"BE0987654321\"], \"singlevalue\": \"BE1234567890\"}"
+      - "SPRING_CLOUD_GATEWAY_ROUTES_0_ID=api"
+      - "SPRING_CLOUD_GATEWAY_ROUTES_0_URI=http://172.17.0.1:9080/"
+      - "SPRING_CLOUD_GATEWAY_ROUTES_0_PREDICATES_0=Path=/api/**"
+      - "SPRING_CLOUD_GATEWAY_ROUTES_1_ID=ui"
+      - "SPRING_CLOUD_GATEWAY_ROUTES_1_URI=http://172.17.0.1:3000/"
+      - "SPRING_CLOUD_GATEWAY_ROUTES_1_PREDICATES_0=Path=/**"
     ports:
       - "8080:8080"

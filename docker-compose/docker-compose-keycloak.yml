@@ -2,7 +2,8 @@ version: '3.7'
 
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:latest
+    image: quay.io/keycloak/keycloak:13.0.0
+    #image: quay.io/keycloak/keycloak:latest
     volumes:
       - ./example-keycloak:/tmp/keycloak/:rw
     ports:
